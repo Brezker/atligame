@@ -13,6 +13,9 @@ public class PlayerScript : MonoBehaviour
     private bool doubleJumpAvailable = false;
     public float doubleJumpForce = 6.0f;
 
+    public GameObject bulletPref;
+    //public float bulletSpeed = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +71,8 @@ public class PlayerScript : MonoBehaviour
         // Crea una copia de el objeto en el mapa, todos tienen el mismo control
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Instantiate(rb, transform.position + transform.forward, Quaternion.identity);
+            Instantiate(bulletPref, transform.position + transform.forward, Quaternion.identity);
+            Debug.Log("Objeto Salido.");
         }
     }
 
