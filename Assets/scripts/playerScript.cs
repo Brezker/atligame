@@ -65,6 +65,11 @@ public class PlayerScript : MonoBehaviour
                 isFlying = false;
             }
         }
+        // Crea una copia de el objeto en el mapa, todos tienen el mismo control
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Instantiate(rb, transform.position + transform.forward, Quaternion.identity);
+        }
     }
 
     // OnCollisionEnter is called when the object collides with something
@@ -88,3 +93,54 @@ public class PlayerScript : MonoBehaviour
         }
     }
 }
+
+
+/*
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class mover_player : MonoBehaviour
+{
+    public float velocidad = 0f;
+    private Rigidbody rb;
+    private bool gravity_enable = true;
+    // Start is called before the first frame update
+    public GameObject obj1;
+    
+    void Start()
+    {
+         rb = GetComponent<Rigidbody>();
+         rb.useGravity = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float mh = Input.GetAxis("Horizontal");
+        float mv = Input.GetAxis("Vertical");
+
+        float j = Input.GetAxis("Jump");
+
+        Vector3 movimiento = new Vector3(mh, j, mv);
+
+        transform.Translate(movimiento * velocidad * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Instantiate(obj1, transform.position + transform.forward, Quaternion.identity);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {   
+            gravity_enable = !gravity_enable;
+            if(gravity_enable){
+                rb.useGravity = false;
+            }else{
+                rb.useGravity = true;
+            }
+            
+        }
+    }
+}
+*/
