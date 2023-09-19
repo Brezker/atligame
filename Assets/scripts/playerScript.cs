@@ -14,7 +14,9 @@ public class PlayerScript : MonoBehaviour
     public float doubleJumpForce = 6.0f;
 
     public GameObject bulletPref;
-    //public float bulletSpeed = 10;
+
+    public float bulletSpeed = 10;
+    public GameObject badCube;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,8 @@ public class PlayerScript : MonoBehaviour
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalMove, 0, verticalMove) * playerSpeed * Time.deltaTime;
+        Vector3 movement =
+            new Vector3(horizontalMove, 0, verticalMove) * playerSpeed * Time.deltaTime;
 
         rb.MovePosition(transform.position + movement);
 
@@ -71,8 +74,24 @@ public class PlayerScript : MonoBehaviour
         // Crea una copia de el objeto en el mapa, todos tienen el mismo control
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Instantiate(bulletPref, transform.position + transform.forward, Quaternion.identity);
+            Instantiate(badCube, transform.position + transform.forward, Quaternion.identity);
             Debug.Log("Objeto Salido.");
+        }
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            // var bulletSp = transform.position + transform.forward;
+            var bullet = Instantiate(
+                bulletPref,
+                transform.position + transform.forward,
+                Quaternion.identity
+            );
+            // if (bullet != null)
+            // {
+            //     bullet.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+            // }
+            bullet.GetComponent<BulletMove>().Init(transform.forward);
+            // Destroy(bullet, 10);
+            Debug.Log("Bala Salido.");
         }
     }
 
@@ -85,6 +104,12 @@ public class PlayerScript : MonoBehaviour
             //Debug.Log("Colisión con el suelo detectada.");
             doubleJumpAvailable = true;
         }
+        // if (collision.gameObject.CompareTag("Enemy"))
+        // {
+        //     Destroy(collision.rb);
+        //     Destroy(rb);
+        //     Debug.Log("Objeto muerto");
+        // }
     }
 
     // OnCollisionExit is called when the object stops colliding with something
@@ -136,7 +161,7 @@ public class mover_player : MonoBehaviour
         }
         
         if (Input.GetKeyDown(KeyCode.LeftControl))
-        {   
+        {
             gravity_enable = !gravity_enable;
             if(gravity_enable){
                 rb.useGravity = false;
