@@ -13,11 +13,6 @@ public class BulletMove : MonoBehaviour
         this.direction = direction.normalized;
     }
 
-    void Awake()
-    {
-        // Destroy(gameObject, life); // Corregido para destruir el propio objeto (gameObject)
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -26,7 +21,6 @@ public class BulletMove : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Objeto muerto");
         }
-        //https://www.youtube.com/watch?v=EwiUomzehKU
     }
 
     void Update()
