@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoScript : MonoBehaviour
+public class BadAmmoScript : MonoBehaviour
 {
     public GameObject counterAmmo;
 
@@ -12,7 +12,7 @@ public class AmmoScript : MonoBehaviour
         Quaternion currentRotation = transform.rotation;
 
         // Incrementa la rotación en el eje Y con el tiempo
-        float rotationSpeed = 40f; // Velocidad de rotación
+        float rotationSpeed = -40f; // Velocidad de rotación
         currentRotation *= Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
 
         // Aplica la nueva rotación
@@ -24,7 +24,7 @@ public class AmmoScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            GuiScript.instance.AddBullets();
+            GuiScript.instance.TakeBullets();
         }
     }
 }

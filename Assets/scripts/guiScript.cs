@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class counterScript : MonoBehaviour
+public class GuiScript : MonoBehaviour
 {
     public Text bulletCounter;
-    int numBullets = 5;
+    public int numBullets = 5;
+    public static GuiScript instance;
+
+    public bool hasAmmo;
 
     private void Awake()
     {
@@ -23,5 +26,33 @@ public class counterScript : MonoBehaviour
     {
         numBullets += 10;
         bulletCounter.text = "Bullets: " + numBullets.ToString();
+    }
+
+    public void TakeBullets()
+    {
+        // numBullets = Math.Max(numBullets - 10, 0);
+        numBullets -= 10;
+        if (numBullets < 0)
+        {
+            numBullets = 0;
+        }
+        bulletCounter.text = "Bullets: " + numBullets.ToString();
+    }
+
+    public void UseBullets()
+    {
+        if (numBullets >= 1)
+        {
+            numBullets -= 1;
+            bulletCounter.text = "Bullets: " + numBullets.ToString();
+        }
+    }
+
+    public void HasBullets()
+    {
+        if (numBullets == 0)
+        {
+            bulletCounter.text = "NO AMMO";
+        }
     }
 }

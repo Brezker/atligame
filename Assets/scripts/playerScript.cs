@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject bulletPref;
 
     public float bulletSpeed = 10;
+
     public GameObject badCube;
 
     // Start is called before the first frame update
@@ -77,8 +78,11 @@ public class PlayerScript : MonoBehaviour
             Instantiate(badCube, transform.position + transform.forward, Quaternion.identity);
             // Debug.Log("Objeto Salido.");
         }
-        if (Input.GetKeyDown(KeyCode.RightControl))
+
+        if (Input.GetKeyDown(KeyCode.RightControl) && GuiScript.instance.numBullets > 0)
         {
+            GuiScript.instance.UseBullets();
+            GuiScript.instance.HasBullets();
             var bullet = Instantiate(
                 bulletPref,
                 transform.position + transform.forward,

@@ -7,6 +7,17 @@ public class BulletMove : MonoBehaviour
     // public float life = 300;
     public float velocity = 10f;
     private Vector3 direction;
+    public float delay = 5.0f;
+
+    void Start()
+    {
+        // Invoke("DestroyObject", delay);
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 
     public void Init(Vector3 direction)
     {
