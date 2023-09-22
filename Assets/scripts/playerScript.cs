@@ -76,6 +76,18 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Instantiate(badCube, transform.position + transform.forward, Quaternion.identity);
+            // GameObject newBadCube = Instantiate(
+            //     badCube,
+            //     transform.position + transform.forward,
+            //     Quaternion.identity
+            // );
+            //
+            // // Aplicar una fuerza o movimiento a la bala (si es necesario)
+            // Rigidbody cubeRigidbody = newBadCube.GetComponent<Rigidbody>();
+            // if (cubeRigidbody != null)
+            // {
+            //     cubeRigidbody.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
+            // }
             // Debug.Log("Objeto Salido.");
         }
 
@@ -89,6 +101,8 @@ public class PlayerScript : MonoBehaviour
                 Quaternion.identity
             );
             bullet.GetComponent<BulletMove>().Init(transform.forward);
+            // Esperar 5 seg
+            Destroy(bullet, 5.0f);
             // Debug.Log("Bala Salido.");
         }
     }
