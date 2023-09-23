@@ -19,13 +19,28 @@ public class GuiScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.HasKey("numBullets"))
+        {
+            numBullets = PlayerPrefs.GetInt("numBullets");
+        }
         bulletCounter.text = "Bullets: " + numBullets.ToString();
+    }
+
+    public void SaveBullets(){
+        if(numBullets!=0){
+            PlayerPrefs.SetInt("numBullets",numBullets);
+            PlayerPrefs.Save();
+        } else {
+            PlayerPrefs.SetInt("numBullets",5);
+            PlayerPrefs.Save();
+        }
     }
 
     public void AddBullets()
     {
         numBullets += 10;
         bulletCounter.text = "Bullets: " + numBullets.ToString();
+        SaveBullets();
     }
 
     public void TakeBullets()
@@ -37,6 +52,7 @@ public class GuiScript : MonoBehaviour
             numBullets = 0;
         }
         bulletCounter.text = "Bullets: " + numBullets.ToString();
+        SaveBullets();
     }
 
     public void UseBullets()
@@ -46,6 +62,7 @@ public class GuiScript : MonoBehaviour
             numBullets -= 1;
             bulletCounter.text = "Bullets: " + numBullets.ToString();
         }
+        SaveBullets();
     }
 
     public void HasBullets()
