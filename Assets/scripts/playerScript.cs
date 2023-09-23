@@ -25,6 +25,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        // Limitar FPS
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -82,7 +84,7 @@ public class PlayerScript : MonoBehaviour
             // Debug.Log("Objeto Salido.");
         }
 
-        if (Input.GetKeyDown(KeyCode.RightControl) && GuiScript.instance.numBullets > 0)
+        if (Input.GetKeyDown(KeyCode.Period) && GuiScript.instance.numBullets > 0)
         {
             GuiScript.instance.UseBullets();
             GuiScript.instance.HasBullets();
