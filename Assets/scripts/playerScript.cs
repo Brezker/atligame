@@ -19,6 +19,9 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject badCube;
 
+    public AudioSource source;
+    public AudioClip clip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,7 @@ public class PlayerScript : MonoBehaviour
             {
                 // Salto normal cuando está en el suelo
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                source.PlayOneShot(clip);
             }
             else if (doubleJumpAvailable)
             {
