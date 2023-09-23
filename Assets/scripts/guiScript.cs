@@ -8,7 +8,7 @@ public class GuiScript : MonoBehaviour
     public Text bulletCounter;
     public int numBullets = 5;
     public static GuiScript instance;
-
+    AudioSource ammoSound;
     public bool hasAmmo;
 
     private void Awake()
@@ -24,6 +24,7 @@ public class GuiScript : MonoBehaviour
             numBullets = PlayerPrefs.GetInt("numBullets");
         }
         bulletCounter.text = "Bullets: " + numBullets.ToString();
+        ammoSound = GetComponent<AudioSource>();
     }
 
     public void SaveBullets(){
@@ -38,6 +39,7 @@ public class GuiScript : MonoBehaviour
 
     public void AddBullets()
     {
+        ammoSound.Play();
         numBullets += 10;
         bulletCounter.text = "Bullets: " + numBullets.ToString();
         SaveBullets();

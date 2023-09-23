@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour
     public float bulletSpeed = 10;
 
     public GameObject badCube;
+    public AudioSource source;
+    public AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (isGrounded)
             {
+                source.PlayOneShot(clip);
                 // Salto normal cuando está en el suelo
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
@@ -76,18 +79,6 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Instantiate(badCube, transform.position + transform.forward, Quaternion.identity);
-            // GameObject newBadCube = Instantiate(
-            //     badCube,
-            //     transform.position + transform.forward,
-            //     Quaternion.identity
-            // );
-            //
-            // // Aplicar una fuerza o movimiento a la bala (si es necesario)
-            // Rigidbody cubeRigidbody = newBadCube.GetComponent<Rigidbody>();
-            // if (cubeRigidbody != null)
-            // {
-            //     cubeRigidbody.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
-            // }
             // Debug.Log("Objeto Salido.");
         }
 
