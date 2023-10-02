@@ -946,7 +946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df015e49622499fb68b63a9ce5761ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterAmmo: {fileID: 0}
+  counterAmmo: {fileID: 1368264074}
+  ammoBox: {fileID: 578319196}
+  badAmmoBox: {fileID: 1508258780}
 --- !u!108 &578319204
 Light:
   m_ObjectHideFlags: 0
@@ -2910,6 +2912,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1076262714343606, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2093758982}
+    - targetCorrespondingSourceObject: {fileID: 1076262714343606, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2093758983}
+    - targetCorrespondingSourceObject: {fileID: 1076262714343606, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2093758987}
   m_SourcePrefab: {fileID: 100100000, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
 --- !u!1 &1508258780 stripped
 GameObject:
@@ -3830,6 +3838,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: a90ec1b8be596134b912428bfce1f226, type: 3}
+--- !u!114 &2093758983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093758981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b19105b74b780edbae8a0efc63f1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoBoxPrefab: {fileID: 578319196}
+  numberOfAmmoBoxes: 3
+  spawnArea: {x: 9, y: 1, z: 9}
+--- !u!114 &2093758987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093758981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b19105b74b780edbae8a0efc63f1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoBoxPrefab: {fileID: 1508258780}
+  numberOfAmmoBoxes: 3
+  spawnArea: {x: 9, y: 0, z: 9}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

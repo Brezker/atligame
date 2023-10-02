@@ -1,10 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AmmoScript : MonoBehaviour
 {
     public GameObject counterAmmo;
+    public GameObject ammoBox;
+    public GameObject badAmmoBox;
+
+    void Sart()
+    {
+        // var x = Random.Range(-2.61f, 10.76f);
+        // var y = 1.02f;
+        // var z = Random.Range(-5.22f, 8.49f);
+    }
 
     void Update()
     {
