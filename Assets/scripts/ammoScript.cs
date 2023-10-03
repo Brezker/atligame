@@ -8,6 +8,8 @@ public class AmmoScript : MonoBehaviour
     public GameObject counterAmmo;
     public GameObject ammoBox;
     public GameObject badAmmoBox;
+    public AudioSource source;
+    public AudioClip clip;
 
     void Sart()
     {
@@ -34,6 +36,7 @@ public class AmmoScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            source.PlayOneShot(clip);
             GuiScript.instance.AddBullets();
         }
     }

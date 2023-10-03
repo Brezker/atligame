@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BadAmmoScript : MonoBehaviour
 {
-    public GameObject counterAmmo;
+    //public GameObject counterAmmo;
+    public AudioSource source;
+    public AudioClip clip;
 
     void Update()
     {
@@ -24,6 +26,7 @@ public class BadAmmoScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            source.PlayOneShot(clip);
             GuiScript.instance.TakeBullets();
         }
     }

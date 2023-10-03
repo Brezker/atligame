@@ -19,7 +19,8 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject badCube;
     public AudioSource source;
-    public AudioClip clip;
+    public AudioClip clipJump;
+    public AudioClip clipShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (isGrounded)
             {
-                source.PlayOneShot(clip);
+                source.PlayOneShot(clipJump);
                 // Salto normal cuando está en el suelo
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
@@ -93,6 +94,7 @@ public class PlayerScript : MonoBehaviour
                 transform.position + transform.forward,
                 Quaternion.identity
             );
+            source.PlayOneShot(clipShoot);
             bullet.GetComponent<BulletMove>().Init(transform.forward);
             // Esperar 5 seg
             Destroy(bullet, 5.0f);
